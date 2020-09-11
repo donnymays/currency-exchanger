@@ -1,3 +1,27 @@
 body {
   text-align: center;
+  background-color: #faf3dd;
+}
+
+h1, h2, .showResults1 {
+  color: #ffbb91;
+  padding-top: 10px;
+}
+
+label, .showResults2 {
+  color: #64958f;
+  padding-top: 10px;
+}
+
+
+
+.jumbotron {
+  background-color: #065c6f;
+}
+
+#bottom-container {
+  background-color: #065c6f;
+  margin-top: 25px;
+  padding: 50px 0;
+  display: flexbox;
 }
