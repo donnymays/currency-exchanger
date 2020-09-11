@@ -12,17 +12,15 @@ import Converter from './convert.js';
 $(document).ready(function () {
   $('#exchangeButton').click(function () {
 
-    let userCurrency = parseInt($('#amount').val());
+    let userCurrency = parseFloat($('#amount').val());
+    
     let selectedCurrency = $(".currencySelect").val();
-    let convertToInput = `${response.conversion_rates.selectedCurrency}`;
-    console.log(convertToInput);
 
-    let converter = new Converter(userCurrency, convertToInput);
-    converter.convertCurrency();
+  
 
     let request = new XMLHttpRequest();
     const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/USD`;
-
+    
     request.onreadystatechange = function () {
       if (this.readyState === 4 && this.status === 200) {
         const response = JSON.parse(this.responseText);
@@ -30,14 +28,20 @@ $(document).ready(function () {
       }
     };
 
+
     request.open("GET", url, true);
     request.send();
 
+  
+
+
 
     function getElements(response) {
+      let convertToInput = `${response.conversion_rates[selectedCurrency]}`
+      let converter = new Converter(userCurrency, convertToInput);
+      converter.convertCurrency();
       $('.showResults').text(`${userCurrency} in USD is worth ${converter.convertedCurrency}`)
-      console.log(userCurrency);
-      console.log(converter.convertCurrency);
+
     }
   });
 });
