@@ -7,16 +7,29 @@ import Converter from './convert.js';
 
 
 
+
+
 $(document).ready(function() {
-  $(#exchangeButton).click(function() {
+  $('#exchangeButton').click(function() {
     
-    let convertFromInput = parseInt($('#amount').val());
-    let selectedCurrency = currencySelect.val();
-
+    let userCurrency = parseInt($('#amount').val());
+    let selectedCurrency = $(".currencySelect").val();
+    console.log(selectedCurrency);
     let convertToInput = `response.conversion_rates.${selectedCurrency}`;
-    
-    let converter = new Converter(convertFromInput, convertToInput);
+    console.log(convertToInput);
+    let converter = new Converter(userCurrency, convertToInput, userConvertedCurrency);
+    let country = USD
+    makeApiCall(country);
+    converter.convertCurrency();
 
+    function getElements(response) {
+      if (response.converion_rates) {
+        $('.showResults').text(`${userCurrency} in USD is worth ${converter.userConvertedCurrency}`)
+      } else {
+        $('.showErrors').text(`There was an error: ${response}`);
+      }
+    }
+    
     async function makeApiCall(country) {
       const response = await CurrencyService.exchangeService(country);
       getElements(response);
