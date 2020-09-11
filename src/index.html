@@ -3,29 +3,27 @@
   <title>Currency Exchanger</title>
 </head>
 <body>
-  <div class="container">
-
-      <h1>Currency  Exchanger!</h1>
-      <p>Exchange currency from USD</p>
+  <div class="jumbotron">
+    <h1>Currency  Exchanger!</h1>
+  </div>
+  <div class="container" id="top-container">
+    <p>Exchange currency from USD</p>
       
-      <label for="dollarAmount">Enter an amount in USD</label>
-      <input id="dollarAmount" type="text">
-      <select class="currencySelect">
-        <option selected>Choose currency converted to:</option>
-        <option value="AUD">AUD</option>
-        <option value="CAD">CAD</option>
-        <option value="EUR">EUR</option>
-        <option value="JPY">JPY</option>
-        <option value="RUB">RUB</option>
-      </select>
-      <button class="btn-success" id="convertToButton">Exchange!</button>
-
-
-
+    <label for="dollarAmount">Enter an amount in USD</label>
+    <input id="dollarAmount" type="text">
+    <select class="currencySelect">
+      <option selected>Choose currency converted to:</option>
+      <option value="AUD">AUD</option>
+      <option value="CAD">CAD</option>
+      <option value="EUR">EUR</option>
+      <option value="JPY">JPY</option>
+      <option value="RUB">RUB</option>
+    </select>
+    <button class="btn-success" id="convertToButton">Exchange!</button>
     <div class="showErrors"></div>
     <div class="showResults1"></div>
-
-    <h1>Currency  Exchanger!</h1>
+  </div>
+  <div class="container" id="bottom-container">
     <p>Exchange currency into USD</p>
     
     <label for="currencyAmount">Enter Amount:</label>
