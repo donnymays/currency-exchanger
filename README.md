@@ -6,11 +6,13 @@
 
 ## Description
 
-_ _
+_This is a project to demonstrate my understanding of using APIs.  In this project, using the ExchangeRate-API a user's input can be converted back and forth between USDs and several other currencies from around the globe._
 
 ## Specifications
 |  Spec | Input  | Output  |
 |---|---|---|
+| Output can correctly convert USD to another currency | 12 USD | 15.80 CAD |
+| Output can correctly convert another currenct to USD | 25 JPY | 0.24 USD |
 
 
 

@@ -8,7 +8,6 @@ import Converter from './convert.js';
 function clearFields() {
   $('#dollarAmount').val("");
   $('#currencyAmount').val("");
-  $('#.currencySelect').val("");
 }
 
 function getElementsFromUSD(response) {
