@@ -1,4 +1,4 @@
-# _Galactic Calculator_
+# _Currency Exchanger_
 
 #### _Asynchrony and API Project, Created 9.4.2020_
 
