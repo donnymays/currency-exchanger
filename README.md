@@ -16,7 +16,6 @@ _This is a project to demonstrate my understanding of using APIs.  In this proje
 
 
 
-
 ## Setup/Installation Requirements
 
 * _To view and/or edit the files for this project:_
@@ -47,7 +46,7 @@ _Please contact Donny Mays at dtmays2@gmail.com with any questions or concerns, 
 
 ## Technologies Used
 
-_ _
+__This project was built using HTML, CSS, & JavaScript; Bootstrap & jQuery frameworks; Node project maanager; & xchangeRate-API__
 
 ### License
 
