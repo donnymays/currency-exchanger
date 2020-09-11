@@ -6,28 +6,35 @@ import CurrencyService from './currency-service.js';
 import Converter from './convert.js';
 
 
-  
+
 function getElements(response) {
   if (response.conversion_rates) {
-    let userCurrency = parseFloat($('#amount').val());
+    let userDollar = parseFloat($('#amount').val());
     let selectedCurrency = $(".currencySelect").val();
-    let convertToInput = `${response.conversion_rates[selectedCurrency]}`
-    let converter = new Converter(userCurrency, convertToInput);
+    let conversionFactorInput = `${response.conversion_rates[selectedCurrency]}`
+    let converter = new Converter(userDollar, conversionFactorInput);
     converter.convertCurrency();
-    $('.showResults').text(`${userCurrency} in USD is worth ${converter.convertedCurrency}`);
+    $('.showResults').text(`${userDollar} in USD is worth ${converter.convertedCurrency}`);
   } else {
-    $('.showErrors').text(`There was an error processing your request: ${response.result}`);
+    $('.showErrors').text(`There was an error processing your request: ${response.error-type}`);
   }
 }
 
 
-
 $(document).ready(function () {
-  $('#exchangeButton').click(function () {  
+  $('#converToButton').click(function () {
     CurrencyService.exchangeCurrency()
-    .then(function(response) {
-      getElements(response);
-    });
-    });   
+      .then(function (response) {
+        getElements(response);
+      });
   });
+});
+$(document).ready(function () {
+  $('#convertFromButton').click(function () {
+    CurrencyService.exchangeCurrency()
+      .then(function (response) {
+        getElements(response);
+      });
+  });
+});
 

@@ -1,11 +1,15 @@
 export default class Converter {
-  constructor(convertFrom, convertTo, convertedCurrency) {
-    this.convertFrom = convertFrom;
-    this.convertTo = convertTo;
+  constructor(dollar, conversionFactor, convertedCurrency, convertedDollar) {
+    this.dollar = dollar;
+    this.conversionFactor = conversionFactor;
     this.convertedCurrency = convertedCurrency;
+    this.convertedDollar = convertedDollar
   }
   convertCurrency() {
-    this.convertedCurrency = Number.parseFloat(this.convertFrom * this.convertTo).toFixed(2);
- 
+    this.convertedCurrency = Number.parseFloat(this.dollar * this.conversionFactor).toFixed(2);
+  }
+  convertToDollar() {
+    this.convertedDollar = Number.parseFloat(this.)
+
   }
 }
