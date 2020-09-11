@@ -12,30 +12,33 @@ function getElementsFromUSD(response) {
     let userDollar = parseFloat($('#dollarAmount').val());
     let selectedCurrency = $(".currencySelect").val();
     let conversionFactorInput = `${response.conversion_rates[selectedCurrency]}`
+    console.log(conversionFactorInput);
     let converter = new Converter(userDollar, conversionFactorInput);
     converter.convertCurrency();
-    $('.showResults').text(`${userDollar} in USD is worth ${converter.convertedCurrency}`);
+    $('.showResults1').text(`${userDollar} in USD is worth ${converter.convertedCurrency} in ${selectedCurrency}`);
   } else {
-    $('.showErrors').text(`There was an error processing your request: ${response.error-type}`);
+    $('.showErrors').text(`There was an error processing your request: ${response.error}`);
   }
 }
 
 function getElementsToUSD(response) {
   if (response.conversion_rates) {
     let userAmount = parseFloat($('#currencyAmount').val());
-    let selectedCurrency = $(".currencySelect").val();
-    let conversionFactorInput = `${response.conversion_rates[selectedCurrency]}`
+    let selectedCurrency2 = $(".currencyFromSelect").val();
+    let conversionFactorInput = `${response.conversion_rates[selectedCurrency2]}`
+    console.log(conversionFactorInput);
     let converter = new Converter(userAmount, conversionFactorInput);
-    converter.convertCurrency();
-    $('.showResults').text(`${userDollar} in USD is worth ${converter.convertedCurrency}`);
+    console.log(converter);
+    converter.convertToDollar();
+    $('.showResults2').text(`${userAmount} in ${selectedCurrency2} is worth ${converter.convertedDollar} in USD`);
   } else {
-    $('.showErrors').text(`There was an error processing your request: ${response.error-type}`);
+    $('.showErrors').text(`There was an error processing your request: ${response.error}`);
   }
 }
 
 
 $(document).ready(function () {
-  $('#exchangeButton').click(function () {
+  $('#convertToButton').click(function () {
     CurrencyService.exchangeCurrency()
       .then(function (response) {
         getElementsFromUSD(response);
