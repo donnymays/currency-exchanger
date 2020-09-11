@@ -8,7 +8,7 @@ export default class Converter {
   convertCurrency() {
     this.convertedCurrency = Number.parseFloat(this.dollar * this.conversionFactor).toFixed(2);
   }
-  convertToDollar() {
+  convertToDollar(conversionRate) {
     this.convertedDollar = Number.parseFloat(this.)
 
   }

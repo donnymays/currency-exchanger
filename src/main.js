@@ -2,14 +2,14 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import CurrencyService from './currency-service.js';
+import fromDollarService from './fromDollar-service.js';
 import Converter from './convert.js';
 
 
 
 function getElements(response) {
   if (response.conversion_rates) {
-    let userDollar = parseFloat($('#amount').val());
+    let userDollar = parseFloat($('#dollarAmount').val());
     let selectedCurrency = $(".currencySelect").val();
     let conversionFactorInput = `${response.conversion_rates[selectedCurrency]}`
     let converter = new Converter(userDollar, conversionFactorInput);
@@ -23,7 +23,7 @@ function getElements(response) {
 
 $(document).ready(function () {
   $('#converToButton').click(function () {
-    CurrencyService.exchangeCurrency()
+    fromDollarService.exchangetoDollar()
       .then(function (response) {
         getElements(response);
       });
