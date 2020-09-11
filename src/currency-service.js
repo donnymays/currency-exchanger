@@ -1,7 +1,7 @@
 export default class CurrencyService {  
-  static async exchangeCurrency(country) {
+  static async exchangeCurrency() {
     try {
-      const response = await fetch (`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/${country}`);
+      const response = await fetch (`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/USD`);
       if (!response.ok) {
         throw Error(response.statusText);
       }

@@ -14,26 +14,32 @@ $(document).ready(function() {
     
     let userCurrency = parseInt($('#amount').val());
     let selectedCurrency = $(".currencySelect").val();
-    console.log(selectedCurrency);
     let convertToInput = `response.conversion_rates.${selectedCurrency}`;
-    console.log(convertToInput);
-    let converter = new Converter(userCurrency, convertToInput, userConvertedCurrency);
-    let country = USD
-    makeApiCall(country);
+    console.log(`response.conversion_rates.CAD`);
+    
+    let converter = new Converter(userCurrency, convertToInput);
     converter.convertCurrency();
+  
 
     function getElements(response) {
       if (response.converion_rates) {
-        $('.showResults').text(`${userCurrency} in USD is worth ${converter.userConvertedCurrency}`)
+        $('.showResults').text(`${userCurrency} in USD is worth ${converter.convertedCurrency}`)
       } else {
         $('.showErrors').text(`There was an error: ${response}`);
       }
     }
     
-    async function makeApiCall(country) {
-      const response = await CurrencyService.exchangeService(country);
+    async function makeApiCall() {
+      const response = await CurrencyService.exchangeCurrency();
       getElements(response);
     }
+
+    makeApiCall();
+   
+
+    
+    
+   
 
  
 
