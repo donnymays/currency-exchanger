@@ -9,6 +9,21 @@ import Converter from './convert.js';
 
 $(document).ready(function() {
   $(#exchangeButton).click(function() {
+    
+    let convertFromInput = parseInt($('#amount').val());
+    let selectedCurrency = currencySelect.val();
+
+    let convertToInput = `response.conversion_rates.${selectedCurrency}`;
+    
+    let converter = new Converter(convertFromInput, convertToInput);
+
+    async function makeApiCall(country) {
+      const response = await CurrencyService.exchangeService(country);
+      getElements(response);
+    }
+
+ 
+
 
   });
 });
