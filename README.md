@@ -30,6 +30,7 @@ _ _
     * .DS_Store
     * .env
 * _Then: $ npm install_
+* _Then: $ npm install dotenv-webpack --save-dev_
 * _Then: $ npm run start_
 * _To obtain an API Key for ExchangeRate-API:_
 * _Navigate to https://exchangerate-api.com_
