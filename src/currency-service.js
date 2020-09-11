@@ -1,17 +1,14 @@
 export default class CurrencyService {  
-  static exchangeCurrency(country) {
-    return new Promise(function(resolve, reject) {
-      let request = new XMLHttpRequest();
-      const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/${country}`;
-      request.onload = function() {
-        if (this.status === 200) {
-          resolve(request.response);
-        } else {
-          reject(request.response);
-        }
+  static asyc exchangeCurrency(country) {
+    try {
+      const response = await fetch (`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/${country}`);
+      if (!response.ok) {
+        throw Error(response.statusText);
       }
-      request.open("GET", url, true);
-      request.send();
-    });
+      return response.json();
+    } catch(error) {
+      return error.message;
+    }
   }
-}
+ }
+  
