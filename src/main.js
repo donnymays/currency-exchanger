@@ -13,35 +13,33 @@ $(document).ready(function () {
   $('#exchangeButton').click(function () {
 
     let userCurrency = parseFloat($('#amount').val());
-    
     let selectedCurrency = $(".currencySelect").val();
 
   
-
-    let request = new XMLHttpRequest();
-    const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/USD`;
-    
-    request.onreadystatechange = function () {
-      if (this.readyState === 4 && this.status === 200) {
-        const response = JSON.parse(this.responseText);
-        getElements(response);
+    let promise = new Promise(function(resolve, reject) {
+      let request = new XMLHttpRequest();
+      const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/USD`;
+      request.onload = function () {
+        if (this.status === 200) {
+          resolve(request.response);
+        } else {
+          reject(request.response);
+        }
       }
-    };
+      request.open("GET", url, true);
+      request.send();
+    });
 
-
-    request.open("GET", url, true);
-    request.send();
-
-  
-
-
-
-    function getElements(response) {
-      let convertToInput = `${response.conversion_rates[selectedCurrency]}`
+    promise.then(function(response) {
+      const body = JSON.parse(response);
+      let convertToInput = `${body.conversion_rates[selectedCurrency]}`
       let converter = new Converter(userCurrency, convertToInput);
       converter.convertCurrency();
-      $('.showResults').text(`${userCurrency} in USD is worth ${converter.convertedCurrency}`)
-
-    }
+      $('.showResults').text(`${userCurrency} in USD is worth ${converter.convertedCurrency}`);
+      $('.showErrors').text("");
+    }, function(error) {
+      $('.showErrors').text(`There was an error processing your request: ${error}`);
+      $('.showResults').text("");
+    });   
   });
 });
