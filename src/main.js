@@ -38,15 +38,13 @@ function getElementsToUSD(response) {
   }
 }
 
-
 $(document).ready(function () {
   $('#convertToButton').click(function () {
     CurrencyService.exchangeCurrency()
       .then(function (response) {
         getElementsFromUSD(response);
       });
-  
-  });
+   });
 });
 
 $(document).ready(function () {
@@ -54,8 +52,7 @@ $(document).ready(function () {
     CurrencyService.exchangeCurrency()
       .then(function (response) {
         getElementsToUSD(response);
-      });
-    
+      });    
   });
 });
 

@@ -22,8 +22,8 @@ _This is a project to demonstrate my understanding of using APIs.  In this proje
 * _To view and/or edit the files for this project:_
 * _Open a command line tool_
 * _Navigate to the desktop (or whatever directory you'd like to save the files) using the cd command_
-* _Input: $ git clone https://github.com/donnymays/ .git _
-* _Then: $ cd Currency-Exchanger_
+* _Input: $ git clone https://github.com/donnymays/currency-exchanger.git_
+* _Then: $ cd currency-exchanger_
 * _Then: $ code ._
 * _Create a gitignore file with $ touch .gitignore_
 * _Add these files to .gitignore_
